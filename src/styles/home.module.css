@@ -1,0 +1,33 @@
+.wrapper_main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto 0;
+  border: 2px solid lightgray;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.image_wrapper img {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.wrapper_main button {
+  padding: 6px 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  outline: none !important;
+  cursor: pointer;
+  border: lightgray !important;
+  transition: all;
+  transition-duration: 200ms;
+}
+
+.wrapper_main button:hover {
+  background: #dedede;
+}
