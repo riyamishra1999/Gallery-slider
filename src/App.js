@@ -1,27 +1,88 @@
+import React from "react";
 import { useState } from "react";
-import BookImage from "../src/assets/books.jpg";
-import SeaScapeImage from "../src/assets/seascape.jpg";
-import WindowImage from "../src/assets/window.jpg";
-import styles from "../src/styles/home.module.css";
 
-const App = () => {
-  const [currentImage, setCurrentImage] = useState(1);
-  const handleNextImage = () => {
-    setCurrentImage((prevState) => (prevState < 3 ? prevState + 1 : prevState));
+export default function MyApp() {
+  const [fullName, setFullName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [userDetail, setUserDetail] = useState({
+    fullName: "",
+    age: "",
+    email: "",
+    password: "",
+  });
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("form submitted");
+    console.log("FullName:", fullName);
+    console.log("Age:", age);
+    console.log("Email", email);
+    console.log("Password", password);
+
+    setFullName("");
+    setAge("");
+    setEmail("");
+    setPassword("");
   };
+
+  console.log(userDetail, "user detail");
+
   return (
-    <div className={styles.wrapper_main}>
-      <div className={styles.image_wrapper}>
-        {currentImage === 1 && <img src={BookImage} />}
-        {currentImage === 2 && <img src={SeaScapeImage} />}
-        {currentImage === 3 && <img src={WindowImage} />}
-      </div>
-      <div>
-        <button onClick={handleNextImage}>Next image</button>
-      </div>
-      <p>I am image no. {currentImage}</p>
+    <div>
+      <form onSubmit={handleClick}>
+        <label>Full Name:</label>
+        <br />
+        <input
+          required
+          type="text"
+          name="name"
+          value={userDetail.fullName}
+          onChange={(e) =>
+            setUserDetail((prevState) => ({
+              ...prevState,
+              fullName: e.target.value,
+            }))
+          }
+        />
+        <br />
+        <label>Age:</label>
+        <br />
+        <input
+          type="string"
+          name="age"
+          value={userDetail.age}
+          onChange={(e) =>
+            setUserDetail((prevState) => ({
+              ...prevState,
+              age: e.target.value,
+            }))
+          }
+        />
+        <br />
+        <label>Email:</label>
+        <br />
+        <input
+          type="email"
+          name="name"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
+        <label>Password:</label>
+        <br />
+        <input
+          type="password"
+          name="name"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <br />
+        <input type="submit" name="name" value="submit" />
+      </form>
     </div>
   );
-};
-
-export default App;
+}
